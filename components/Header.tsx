@@ -305,7 +305,7 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label={userName}
                 aria-haspopup="menu"
                 aria-expanded={profileOpen}
-                className="shrink-0 rounded-full bg-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60 cursor-pointer hover:opacity-80 transition-opacity relative"
+                className="shrink-0 rounded-full bg-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60 cursor-pointer hover:opacity-80 transition-opacity"
               >
                 <Image
                   src={avatarSrc}
@@ -404,7 +404,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Results */}
-            <div className="max-h-80 overflow-y-auto py-2">
+            <div className="max-h-80 overflow-y-auto py-2 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {filtered.length === 0 ? (
                 <div className="px-4 py-10 text-center text-sm text-[var(--muted)]">
                   No results for "{query}"
