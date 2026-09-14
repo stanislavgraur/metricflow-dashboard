@@ -59,10 +59,11 @@ const Sparkline: React.FC<SparklineProps> = ({ data, color, gradientId }) => {
   const range = max - min || 1;
   const width = 100;
   const height = 32;
+  const padding = 2;
 
   const points: Point[] = data.map((value, index) => ({
     x: (index / (data.length - 1)) * width,
-    y: height - ((value - min) / range) * (height - 4) - 2,
+    y: height - ((value - min) / range) * (height - padding * 2) - padding,
   }));
 
   const linePath = toSmoothPath(points);

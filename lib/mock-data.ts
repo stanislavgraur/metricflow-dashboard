@@ -68,12 +68,18 @@ const formatNumber = (value: number): string => {
   return value.toLocaleString('en-US');
 };
 
-const generateSparklineData = (baseValue: number, volatility: number, points: number): number[] => {
+// Simple seeded random number generator for consistent SSR/client rendering
+const seededRandom = (seed: number): number => {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+};
+
+const generateSparklineData = (baseValue: number, volatility: number, points: number, seed: number): number[] => {
   const data: number[] = [];
   let currentValue = baseValue;
   
   for (let i = 0; i < points; i++) {
-    const change = (Math.random() - 0.45) * volatility;
+    const change = (seededRandom(seed + i) - 0.45) * volatility;
     currentValue = Math.max(baseValue * 0.7, currentValue * (1 + change));
     data.push(Math.round(currentValue));
   }
@@ -81,9 +87,15 @@ const generateSparklineData = (baseValue: number, volatility: number, points: nu
   return data;
 };
 
+// ============================================================================
+// FIXED DATE HELPERS - using fixed reference date for SSR/client consistency
+// ============================================================================
+
+const REFERENCE_DATE = new Date(2024, 11, 15); // Fixed reference: Dec 15, 2024
+
 const getLastNDays = (n: number): string[] => {
   const days: string[] = [];
-  const now = new Date();
+  const now = REFERENCE_DATE;
   
   for (let i = n - 1; i >= 0; i--) {
     const date = new Date(now);
@@ -96,7 +108,7 @@ const getLastNDays = (n: number): string[] => {
 
 const getLastNMonths = (n: number): string[] => {
   const months: string[] = [];
-  const now = new Date();
+  const now = REFERENCE_DATE;
   
   for (let i = n - 1; i >= 0; i--) {
     const date = new Date(now);
@@ -130,7 +142,14 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
   const revenue = baseRevenue * multiplier;
   const mrr = baseMRR * multiplier;
   const users = Math.round(baseUsers * Math.sqrt(multiplier));
-  const conversion = baseConversion + (Math.random() - 0.5) * 5;
+  // Use a deterministic conversion rate based on period to avoid hydration mismatch
+  const conversionBase: Record<DateRangeOption, number> = {
+    '7d': 25.5,
+    '30d': 26.2,
+    '90d': 26.92,
+    '1y': 27.5,
+  };
+  const conversion = conversionBase[period];
   
   const trends = [14.2, 12.8, 18.5, 9.3];
   
@@ -141,7 +160,7 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
       trend: trends[0],
       trendLabel: `+${trends[0]}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(revenue / 1_000_000, 0.08, 10),
+      sparklineData: generateSparklineData(revenue / 1_000_000, 0.08, 10, 1),
     },
     {
       label: 'MRR',
@@ -149,7 +168,7 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
       trend: trends[1],
       trendLabel: `+${trends[1]}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(mrr / 1_000_000, 0.06, 10),
+      sparklineData: generateSparklineData(mrr / 1_000_000, 0.06, 10, 2),
     },
     {
       label: 'ACTIVE USERS',
@@ -157,7 +176,7 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
       trend: trends[2],
       trendLabel: `+${trends[2]}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(users, 0.1, 10),
+      sparklineData: generateSparklineData(users, 0.1, 10, 3),
     },
     {
       label: 'CONVERSION RATE',
@@ -165,7 +184,7 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
       trend: trends[3],
       trendLabel: `+${trends[3]}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(conversion * 100, 0.05, 10),
+      sparklineData: generateSparklineData(conversion * 100, 0.05, 10, 4),
     },
   ];
 };
@@ -204,11 +223,15 @@ export const getRevenueData = (period: DateRangeOption): ChartDataPoint[] => {
   let runningDirect = baseDirect;
   let runningEnterprise = baseEnterprise;
   
+  // Use deterministic seed based on period for consistent SSR/client rendering
+  const seedBase = period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365;
+  
   for (let i = 0; i < points; i++) {
-    const growthFactor = 1 + (i * 0.02) + (Math.random() - 0.4) * 0.1;
+    const growthFactorDirect = 1 + (i * 0.02) + (seededRandom(seedBase + i) - 0.45) * 0.1;
+    const growthFactorEnterprise = 1 + (i * 0.025) + (seededRandom(seedBase + i + 100) - 0.45) * 0.1;
     
-    runningDirect = Math.round(runningDirect * growthFactor);
-    runningEnterprise = Math.round(runningEnterprise * (1 + (i * 0.025) + (Math.random() - 0.4) * 0.1));
+    runningDirect = Math.round(runningDirect * growthFactorDirect);
+    runningEnterprise = Math.round(runningEnterprise * growthFactorEnterprise);
     
     data.push({
       month: labels[i],
@@ -304,21 +327,24 @@ export const getTransactions = (period: DateRangeOption): Transaction[] => {
   ];
   
   const now = new Date();
+  // Use deterministic seed based on period for consistent SSR/client rendering
+  const seedBase = period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365;
   
   for (let i = 0; i < count; i++) {
-    const daysAgo = Math.floor(Math.random() * (period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365));
+    const daysAgo = Math.floor(seededRandom(seedBase + i) * (period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365));
     const date = new Date(now);
     date.setDate(date.getDate() - daysAgo);
     
-    const statusIndex = Math.random() > 0.2 ? 0 : Math.random() > 0.5 ? 1 : 2;
+    const statusRand = seededRandom(seedBase + i + 50);
+    const statusIndex = statusRand > 0.8 ? 2 : statusRand > 0.5 ? 1 : 0;
     
     transactions.push({
-      id: `1200${1000 + i}${Math.floor(Math.random() * 100)}`,
+      id: `1200${1000 + i}${Math.floor(seededRandom(seedBase + i + 100) * 100)}`,
       customer: customers[i % customers.length],
       date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       status: statuses[statusIndex],
-      total: Math.round((Math.random() * 1500 + 100) * 100) / 100,
-      paymentMethod: paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
+      total: Math.round((seededRandom(seedBase + i + 150) * 1500 + 100) * 100) / 100,
+      paymentMethod: paymentMethods[Math.floor(seededRandom(seedBase + i + 200) * paymentMethods.length)],
     });
   }
   
