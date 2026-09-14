@@ -1,16 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
 import { X } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from '@/components/ui/chart';
 
 // ============================================================================
 // TYPES
@@ -210,7 +203,13 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
             </div>
           </div>
 
-          <ResponsiveContainer width="100%" height={300}>
+          <ChartContainer
+            config={{
+              direct: { label: 'Direct', color: '#6366F1' },
+              enterprise: { label: 'Enterprise', color: '#10B981' },
+            }}
+            className="w-full h-[300px]"
+          >
             <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} opacity={0.3} />
               <XAxis dataKey="month" stroke="var(--muted)" fontSize={12} tickLine={false} axisLine={false} />
@@ -221,11 +220,12 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
                 axisLine={false}
                 tickFormatter={(value) => `$${value / 1000}k`}
               />
-              <Tooltip content={<CustomTooltip />} cursor={<ChartCursor />} />
+              <ChartTooltip content={<ChartTooltipContent />} cursor={<ChartCursor />} />
+              <ChartLegend content={<ChartLegendContent />} />
               <Bar dataKey="direct" name="Direct" fill="#6366F1" stackId="a" radius={[0, 0, 0, 0]} barSize={28} />
               <Bar dataKey="enterprise" name="Enterprise" fill="#10B981" stackId="a" radius={[3, 3, 0, 0]} barSize={28} />
             </BarChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         </div>
 
         {/* ==================================================================

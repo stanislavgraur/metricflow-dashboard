@@ -1984,14 +1984,13 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.mjs [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$BarChart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/chart/BarChart.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Bar.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/XAxis.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/YAxis.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/CartesianGrid.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/Tooltip.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/component/ResponsiveContainer.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.mjs [app-client] (ecmascript) <export default as X>");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -2107,7 +2106,7 @@ const CustomTooltip = ({ active, payload, label })=>{
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                    lineNumber: 93,
+                    lineNumber: 86,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 payload.map((entry, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2120,7 +2119,7 @@ const CustomTooltip = ({ active, payload, label })=>{
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 96,
+                                lineNumber: 89,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             entry.name,
@@ -2129,13 +2128,13 @@ const CustomTooltip = ({ active, payload, label })=>{
                         ]
                     }, index, true, {
                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                        lineNumber: 95,
+                        lineNumber: 88,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)))
             ]
         }, void 0, true, {
             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-            lineNumber: 92,
+            lineNumber: 85,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -2152,7 +2151,7 @@ const ChartCursor = ({ x = 0, y = 0, width = 0, height = 0 })=>/*#__PURE__*/ (0,
         strokeDasharray: "4 4"
     }, void 0, false, {
         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-        lineNumber: 114,
+        lineNumber: 107,
         columnNumber: 3
     }, ("TURBOPACK compile-time value", void 0));
 _c1 = ChartCursor;
@@ -2275,7 +2274,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                         children: "Monthly Revenue Breakdown"
                                     }, void 0, false, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 172,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2292,12 +2291,12 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                         children: p
                                                     }, p, false, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 186,
+                                                        lineNumber: 179,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 184,
+                                                lineNumber: 177,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2310,7 +2309,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 className: "w-2 h-2 rounded-full bg-[#6366F1]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 202,
+                                                                lineNumber: 195,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2318,13 +2317,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: "Direct"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 203,
+                                                                lineNumber: 196,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 194,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2334,7 +2333,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 className: "w-2 h-2 rounded-full bg-[#10B981]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 206,
+                                                                lineNumber: 199,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2342,31 +2341,31 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: "Enterprise"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 207,
+                                                                lineNumber: 200,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 205,
+                                                        lineNumber: 198,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 200,
+                                                lineNumber: 193,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 182,
+                                        lineNumber: 175,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 178,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
@@ -2388,7 +2387,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             opacity: 0.3
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 208,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
@@ -2399,7 +2398,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             axisLine: false
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
@@ -2410,23 +2409,23 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             tickFormatter: (value)=>`$${value / 1000}k`
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 217,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Tooltip, {
                                             content: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomTooltip, {}, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 224,
+                                                lineNumber: 217,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             cursor: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ChartCursor, {}, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 224,
+                                                lineNumber: 217,
                                                 columnNumber: 60
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 224,
+                                            lineNumber: 217,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
@@ -2443,7 +2442,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             barSize: 28
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 218,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
@@ -2460,24 +2459,24 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             barSize: 28
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 226,
+                                            lineNumber: 219,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 207,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 213,
+                                lineNumber: 206,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                        lineNumber: 177,
+                        lineNumber: 170,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2488,7 +2487,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                 children: "Top Acquisition Channels"
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 235,
+                                lineNumber: 228,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2503,7 +2502,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                         children: channel.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 243,
+                                                        lineNumber: 236,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2514,13 +2513,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 244,
+                                                        lineNumber: 237,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 242,
+                                                lineNumber: 235,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2533,23 +2532,23 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                    lineNumber: 247,
+                                                    lineNumber: 240,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 239,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 241,
+                                        lineNumber: 234,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)))
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 239,
+                                lineNumber: 232,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2560,7 +2559,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                         children: "Overall conversion source"
                                     }, void 0, false, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 257,
+                                        lineNumber: 250,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2570,25 +2569,25 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                         children: "View breakdown →"
                                     }, void 0, false, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 258,
+                                        lineNumber: 251,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 256,
+                                lineNumber: 249,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                        lineNumber: 234,
+                        lineNumber: 227,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                lineNumber: 173,
+                lineNumber: 166,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             breakdownOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2601,7 +2600,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                         onClick: ()=>setBreakdownOpen(false)
                     }, void 0, false, {
                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                        lineNumber: 274,
+                        lineNumber: 267,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2617,7 +2616,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                 children: "Acquisition Channel Breakdown"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 275,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2625,13 +2624,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                 children: "Detailed performance by channel · Last 30 Days"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 283,
+                                                lineNumber: 276,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 281,
+                                        lineNumber: 274,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2642,18 +2641,18 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                            lineNumber: 290,
+                                            lineNumber: 283,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 278,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 280,
+                                lineNumber: 273,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2671,7 +2670,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: ch.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 300,
+                                                                lineNumber: 293,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2683,13 +2682,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 301,
+                                                                lineNumber: 294,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 299,
+                                                        lineNumber: 292,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2700,13 +2699,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 310,
+                                                        lineNumber: 303,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 291,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2719,12 +2718,12 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                    lineNumber: 313,
+                                                    lineNumber: 306,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 312,
+                                                lineNumber: 305,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2737,7 +2736,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: "Sessions"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 320,
+                                                                lineNumber: 313,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2745,13 +2744,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: ch.sessions.toLocaleString('en-US')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 321,
+                                                                lineNumber: 314,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 319,
+                                                        lineNumber: 312,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2761,7 +2760,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: "Conv. Rate"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 324,
+                                                                lineNumber: 317,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2772,13 +2771,13 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 325,
+                                                                lineNumber: 318,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 323,
+                                                        lineNumber: 316,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2788,7 +2787,7 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 children: "Revenue"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 328,
+                                                                lineNumber: 321,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2799,30 +2798,30 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                                lineNumber: 329,
+                                                                lineNumber: 322,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                        lineNumber: 327,
+                                                        lineNumber: 320,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                                lineNumber: 318,
+                                                lineNumber: 311,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, ch.name, true, {
                                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 290,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)))
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 295,
+                                lineNumber: 288,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2833,30 +2832,30 @@ const RevenueAcquisitionBlock = ({ revenueData = [
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                    lineNumber: 338,
+                                    lineNumber: 331,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                                lineNumber: 337,
+                                lineNumber: 330,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                        lineNumber: 278,
+                        lineNumber: 271,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-                lineNumber: 273,
+                lineNumber: 266,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/RevenueAcquisitionBlock.tsx",
-        lineNumber: 172,
+        lineNumber: 165,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
