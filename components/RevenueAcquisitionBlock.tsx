@@ -89,10 +89,10 @@ interface CustomTooltipProps {
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-[#0F172A] border border-[#334155] rounded-lg px-3 py-2 shadow-xl shadow-black/40">
-        <p className="text-xs font-medium text-[#94A3B8] mb-1">{label}</p>
+      <div className="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 shadow-xl shadow-black/40">
+        <p className="text-xs font-medium text-[var(--muted)] mb-1">{label}</p>
         {payload.map((entry, index) => (
-          <p key={index} className="text-xs text-[#F8FAFC] flex items-center gap-1.5 leading-5">
+          <p key={index} className="text-xs text-[var(--foreground)] flex items-center gap-1.5 leading-5">
             <span className="w-2 h-2 rounded-[2px] shrink-0" style={{ backgroundColor: entry.color }} />
             {entry.name}: ${entry.value.toLocaleString()}
           </p>
@@ -174,22 +174,22 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
         {/* ==================================================================
             Monthly Revenue Breakdown — STACKED BAR CHART
             ================================================================== */}
-        <div className="lg:col-span-2 bg-[#1E293B] border border-[#334155] rounded-xl p-6">
+        <div className="lg:col-span-2 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-[#F8FAFC] text-lg font-semibold leading-[1.3]">
+            <h3 className="text-[var(--foreground)] text-lg font-semibold leading-[1.3]">
               Monthly Revenue Breakdown
             </h3>
             <div className="flex items-center gap-4">
               {/* Period toggle */}
-              <div className="flex items-center gap-1 p-1 bg-[#0F172A] border border-[#334155] rounded-lg">
+              <div className="flex items-center gap-1 p-1 bg-[var(--background)] border border-[var(--border)] rounded-lg">
                 {(['Weekly', 'Monthly'] as ChartPeriod[]).map((p) => (
                   <button
                     key={p}
                     onClick={() => setPeriod(p)}
                     className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
                       period === p
-                        ? 'bg-[#334155] text-[#F8FAFC]'
-                        : 'text-[#94A3B8] hover:text-[#F8FAFC]'
+                        ? 'bg-[#334155] text-[var(--foreground)]'
+                        : 'text-[var(--muted)] hover:text-[var(--foreground)]'
                     }`}
                   >
                     {p}
@@ -200,11 +200,11 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#6366F1]" />
-                  <span className="text-[#94A3B8] text-xs">Direct</span>
+                  <span className="text-[var(--muted)] text-xs">Direct</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#10B981]" />
-                  <span className="text-[#94A3B8] text-xs">Enterprise</span>
+                  <span className="text-[var(--muted)] text-xs">Enterprise</span>
                 </div>
               </div>
             </div>
@@ -231,8 +231,8 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
         {/* ==================================================================
             Top Acquisition Channels + Footer
             ================================================================== */}
-        <div className="bg-[#1E293B] border border-[#334155] rounded-xl p-6 flex flex-col">
-          <h3 className="text-[#F8FAFC] text-lg font-semibold leading-[1.3]">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-6 flex flex-col">
+          <h3 className="text-[var(--foreground)] text-lg font-semibold leading-[1.3]">
             Top Acquisition Channels
           </h3>
 
@@ -240,10 +240,10 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
             {acquisitionChannels.map((channel, index) => (
               <div key={index}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[#94A3B8] text-sm">{channel.name}</span>
-                  <span className="text-[#F8FAFC] text-sm font-semibold">{channel.percentage}%</span>
+                  <span className="text-[var(--muted)] text-sm">{channel.name}</span>
+                  <span className="text-[var(--foreground)] text-sm font-semibold">{channel.percentage}%</span>
                 </div>
-                <div className="h-2 bg-[#0F172A] rounded-full overflow-hidden">
+                <div className="h-2 bg-[var(--background)] rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{ width: `${channel.percentage}%`, backgroundColor: '#6366F1' }}
@@ -253,8 +253,8 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
             ))}
           </div>
 
-          <div className="flex items-center justify-between pt-4 mt-2 border-t border-[#334155]/40">
-            <span className="text-slate-400 text-xs">Overall conversion source</span>
+          <div className="flex items-center justify-between pt-4 mt-2 border-t border-[var(--border)]/40">
+            <span className="text-[var(--muted)] text-xs">Overall conversion source</span>
             <button
               type="button"
               onClick={() => setBreakdownOpen(true)}
@@ -275,17 +275,17 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setBreakdownOpen(false)}
           />
-          <div className="relative mx-auto mt-20 w-[calc(100%-2rem)] max-w-2xl bg-[#1E293B] border border-[#334155] rounded-xl shadow-2xl shadow-black/60 overflow-hidden">
+          <div className="relative mx-auto mt-20 w-[calc(100%-2rem)] max-w-2xl bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-2xl shadow-black/60 overflow-hidden">
             {/* Modal header */}
-            <div className="flex items-center justify-between px-6 h-16 border-b border-[#334155]">
+            <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--border)]">
               <div>
-                <h4 className="text-[#F8FAFC] text-base font-semibold">Acquisition Channel Breakdown</h4>
+                <h4 className="text-[var(--foreground)] text-base font-semibold">Acquisition Channel Breakdown</h4>
                 <span className="text-slate-500 text-xs">Detailed performance by channel · Last 30 Days</span>
               </div>
               <button
                 onClick={() => setBreakdownOpen(false)}
                 aria-label="Close breakdown"
-                className="p-2 rounded-lg text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/50 transition-colors"
+                className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[#334155]/50 transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -297,7 +297,7 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
                 <div key={ch.name}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-[#F8FAFC] text-sm font-medium">{ch.name}</span>
+                      <span className="text-[var(--foreground)] text-sm font-medium">{ch.name}</span>
                       <span
                         className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
                           ch.trend >= 0 ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'
@@ -307,9 +307,9 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
                         {ch.trend}%
                       </span>
                     </div>
-                    <span className="text-[#F8FAFC] text-sm font-semibold">{ch.share}%</span>
+                    <span className="text-[var(--foreground)] text-sm font-semibold">{ch.share}%</span>
                   </div>
-                  <div className="h-2 bg-[#0F172A] rounded-full overflow-hidden mb-3">
+                  <div className="h-2 bg-[var(--background)] rounded-full overflow-hidden mb-3">
                     <div
                       className="h-full rounded-full"
                       style={{ width: `${ch.share}%`, backgroundColor: '#6366F1' }}
@@ -318,15 +318,15 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
                   <div className="grid grid-cols-3 gap-4">
                     <div>
                       <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Sessions</div>
-                      <div className="text-sm text-[#F8FAFC] font-medium">{ch.sessions.toLocaleString('en-US')}</div>
+                      <div className="text-sm text-[var(--foreground)] font-medium">{ch.sessions.toLocaleString('en-US')}</div>
                     </div>
                     <div>
                       <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Conv. Rate</div>
-                      <div className="text-sm text-[#F8FAFC] font-medium">{ch.conversionRate}%</div>
+                      <div className="text-sm text-[var(--foreground)] font-medium">{ch.conversionRate}%</div>
                     </div>
                     <div>
                       <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Revenue</div>
-                      <div className="text-sm text-[#F8FAFC] font-medium">${ch.revenue.toLocaleString('en-US')}</div>
+                      <div className="text-sm text-[var(--foreground)] font-medium">${ch.revenue.toLocaleString('en-US')}</div>
                     </div>
                   </div>
                 </div>
@@ -334,7 +334,7 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
             </div>
 
             {/* Modal footer */}
-            <div className="flex justify-end px-6 py-4 border-t border-[#334155]">
+            <div className="flex justify-end px-6 py-4 border-t border-[var(--border)]">
               <button
                 onClick={() => setBreakdownOpen(false)}
                 className="h-9 px-4 text-sm font-medium text-slate-200 bg-[#334155]/50 hover:bg-[#334155] rounded-lg transition-colors"

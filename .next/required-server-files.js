@@ -64,7 +64,12 @@ self.__SERVER_FILES_MANIFEST={
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "i.pravatar.cc"
+        }
+      ],
       "qualities": [
         75
       ],

@@ -143,22 +143,22 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
 
   return (
     <>
-      <div className="bg-[#1E293B] border border-[#334155] rounded-xl overflow-hidden">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#334155]">
-          <h3 className="text-[#F8FAFC] text-lg font-semibold leading-[1.3]">Recent Activity</h3>
+        <div className="px-6 py-4 border-b border-[var(--border)]">
+          <h3 className="text-[var(--foreground)] text-lg font-semibold leading-[1.3]">Recent Activity</h3>
         </div>
 
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#334155]">
-                <th className="text-left text-[#94A3B8] text-xs font-medium px-6 py-3 h-10">Transaction ID</th>
-                <th className="text-left text-[#94A3B8] text-xs font-medium px-6 py-3 h-10">Customer</th>
-                <th className="text-left text-[#94A3B8] text-xs font-medium px-6 py-3 h-10">Date</th>
-                <th className="text-left text-[#94A3B8] text-xs font-medium px-6 py-3 h-10">Status Pill Badge</th>
-                <th className="text-right text-[#94A3B8] text-xs font-medium px-6 py-3 h-10">Total</th>
+              <tr className="border-b border-[var(--border)]">
+                <th className="text-left text-[var(--muted)] text-xs font-medium px-6 py-3 h-10">Transaction ID</th>
+                <th className="text-left text-[var(--muted)] text-xs font-medium px-6 py-3 h-10">Customer</th>
+                <th className="text-left text-[var(--muted)] text-xs font-medium px-6 py-3 h-10">Date</th>
+                <th className="text-left text-[var(--muted)] text-xs font-medium px-6 py-3 h-10">Status Pill Badge</th>
+                <th className="text-right text-[var(--muted)] text-xs font-medium px-6 py-3 h-10">Total</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#334155]">
@@ -168,15 +168,15 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
                   onClick={() => setSelected(t)}
                   className="group hover:bg-[#334155]/30 transition-colors cursor-pointer h-[52px]"
                 >
-                  <td className="px-6 text-[#818CF8] text-sm font-medium group-hover:underline">
+                  <td className="px-6 text-[#6366F1] text-sm font-medium group-hover:underline">
                     {t.id}
                   </td>
-                  <td className="px-6 text-[#F8FAFC] text-sm">{t.customer}</td>
-                  <td className="px-6 text-[#94A3B8] text-sm">{t.date}</td>
+                  <td className="px-6 text-[var(--foreground)] text-sm">{t.customer}</td>
+                  <td className="px-6 text-[var(--muted)] text-sm">{t.date}</td>
                   <td className="px-6">
                     <StatusBadge status={t.status} />
                   </td>
-                  <td className="px-6 text-right text-[#F8FAFC] text-sm font-medium">
+                  <td className="px-6 text-right text-[var(--foreground)] text-sm font-medium">
                     ${fmt(t.total)}
                   </td>
                 </tr>
@@ -200,22 +200,22 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
 
         {/* Panel */}
         <aside
-          className={`absolute right-0 top-0 h-full w-full max-w-md bg-[#1E293B] border-l border-[#334155] shadow-2xl shadow-black/60 flex flex-col transition-transform duration-300 ${
+          className={`absolute right-0 top-0 h-full w-full max-w-md bg-[var(--surface)] border-l border-[var(--border)] shadow-2xl shadow-black/60 flex flex-col transition-transform duration-300 ${
             selected ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           {selected && (
             <>
               {/* Sheet header */}
-              <div className="flex items-center justify-between px-6 h-16 border-b border-[#334155] shrink-0">
+              <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--border)] shrink-0">
                 <div>
-                  <h4 className="text-[#F8FAFC] text-base font-semibold">Transaction Details</h4>
-                  <span className="text-[#818CF8] text-xs font-medium">#{selected.id}</span>
+                  <h4 className="text-[var(--foreground)] text-base font-semibold">Transaction Details</h4>
+                  <span className="text-[#6366F1] text-xs font-medium">#{selected.id}</span>
                 </div>
                 <button
                   onClick={() => setSelected(null)}
                   aria-label="Close details"
-                  className="p-2 rounded-lg text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/50 transition-colors"
+                  className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[#334155]/50 transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -225,7 +225,7 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
               <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
                 {/* Status */}
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400 text-sm">Status</span>
+                  <span className="text-[var(--muted)] text-sm">Status</span>
                   <StatusBadge status={selected.status} />
                 </div>
 
@@ -233,53 +233,53 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <div className="text-xs text-slate-500 mb-1">Customer</div>
-                    <div className="text-sm text-[#F8FAFC] font-medium">{selected.customer}</div>
+                    <div className="text-sm text-[var(--foreground)] font-medium">{selected.customer}</div>
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 mb-1">Date</div>
-                    <div className="text-sm text-[#F8FAFC] font-medium">{selected.date}</div>
+                    <div className="text-sm text-[var(--foreground)] font-medium">{selected.date}</div>
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 mb-1">Payment method</div>
-                    <div className="text-sm text-[#F8FAFC] font-medium flex items-center gap-1.5">
+                    <div className="text-sm text-[var(--foreground)] font-medium flex items-center gap-1.5">
                       {selected.paymentMethod.startsWith('Credit Card') ? (
-                        <CreditCard className="w-3.5 h-3.5 text-slate-400" />
+                        <CreditCard className="w-3.5 h-3.5 text-[var(--muted)]" />
                       ) : (
-                        <Wallet className="w-3.5 h-3.5 text-slate-400" />
+                        <Wallet className="w-3.5 h-3.5 text-[var(--muted)]" />
                       )}
                       {selected.paymentMethod}
                     </div>
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 mb-1">Amount</div>
-                    <div className="text-sm text-[#F8FAFC] font-semibold">${fmt(selected.total)}</div>
+                    <div className="text-sm text-[var(--foreground)] font-semibold">${fmt(selected.total)}</div>
                   </div>
                 </div>
 
                 {/* Receipt */}
-                <div className="bg-[#0F172A] border border-[#334155] rounded-lg p-4">
+                <div className="bg-[var(--background)] border border-[var(--border)] rounded-lg p-4">
                   <div className="text-xs font-medium uppercase tracking-wider text-slate-500 mb-3">
                     Receipt breakdown
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Subtotal</span>
-                      <span className="text-[#F8FAFC]">${fmt(calcSubtotal(selected.total))}</span>
+                      <span className="text-[var(--muted)]">Subtotal</span>
+                      <span className="text-[var(--foreground)]">${fmt(calcSubtotal(selected.total))}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Processing fee (2.9% + $0.30)</span>
-                      <span className="text-[#F8FAFC]">${fmt(calcFee(selected.total))}</span>
+                      <span className="text-[var(--muted)]">Processing fee (2.9% + $0.30)</span>
+                      <span className="text-[var(--foreground)]">${fmt(calcFee(selected.total))}</span>
                     </div>
-                    <div className="border-t border-[#334155] pt-2 flex items-center justify-between">
-                      <span className="text-[#F8FAFC] font-medium">Total</span>
-                      <span className="text-[#F8FAFC] font-semibold">${fmt(selected.total)}</span>
+                    <div className="border-t border-[var(--border)] pt-2 flex items-center justify-between">
+                      <span className="text-[var(--foreground)] font-medium">Total</span>
+                      <span className="text-[var(--foreground)] font-semibold">${fmt(selected.total)}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Sheet footer */}
-              <div className="px-6 py-4 border-t border-[#334155] shrink-0">
+              <div className="px-6 py-4 border-t border-[var(--border)] shrink-0">
                 <button
                   onClick={handleDownloadReceipt}
                   className="w-full h-10 flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-medium rounded-lg transition-colors"

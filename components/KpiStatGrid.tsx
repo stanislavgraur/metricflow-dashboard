@@ -149,11 +149,11 @@ export const KpiStatGrid: React.FC<KpiStatGridProps> = ({
         return (
           <div
             key={index}
-            className="bg-[#1E293B] border border-[#334155] rounded-xl p-5 hover:bg-[#334155]/50 transition-colors"
+            className="bg-[var(--surface)] border border-[var(--border)] rounded-xl p-5 hover:bg-opacity-80 transition-colors"
           >
             {/* Top row: UPPERCASE Label + Trend Badge */}
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-medium text-slate-400 tracking-wider uppercase mb-1">
+              <span className="text-[11px] font-medium text-[var(--muted)] tracking-wider uppercase mb-1">
                 {metric.label}
               </span>
               <span
@@ -164,7 +164,7 @@ export const KpiStatGrid: React.FC<KpiStatGridProps> = ({
             </div>
 
             {/* Metric Number */}
-            <div className="text-[#F8FAFC] text-[32px] font-semibold leading-[1.1] mb-3">
+            <div className="text-[var(--foreground)] text-[32px] font-semibold leading-[1.1] mb-3">
               {metric.value}
             </div>
 

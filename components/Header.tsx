@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   BarChart2,
   Search,
@@ -12,6 +14,10 @@ import {
   X,
   TrendingUp,
   Receipt,
+  User,
+  CreditCard,
+  Users,
+  LogOut,
 } from 'lucide-react';
 
 // ============================================================================
@@ -30,11 +36,14 @@ export interface SearchItem {
 
 export interface HeaderProps {
   userName?: string;
+  userEmail?: string;
   avatarSrc?: string;
-  initialDateRange?: DateRangeOption;
-  onDateRangeChange?: (range: DateRangeOption) => void;
+  initialDateRange?: DateRangeOption | 'Last 7 Days' | 'Last 30 Days' | 'Last 90 Days' | 'This Year';
+  onDateRangeChange?: (range: 'Last 7 Days' | 'Last 30 Days' | 'Last 90 Days' | 'This Year') => void;
   onThemeChange?: (theme: ThemeMode) => void;
   onSearchSelect?: (item: SearchItem) => void;
+  onLogout?: () => void;
+  searchItems?: SearchItem[];
 }
 
 // ============================================================================
@@ -74,28 +83,42 @@ const Kbd: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 // ============================================================================
 
 export const Header: React.FC<HeaderProps> = ({
-  userName = 'John Doe',
+  userName = 'Alex Morgan',
+  userEmail = 'alex@metricflow.io',
   avatarSrc = 'https://i.pravatar.cc/80?img=12',
   initialDateRange = 'Last 30 Days',
   onDateRangeChange,
   onThemeChange,
   onSearchSelect,
+  onLogout,
+  searchItems: externalSearchItems,
 }) => {
-  const [dateRange, setDateRange] = useState<DateRangeOption>(initialDateRange);
+  const [dateRange, setDateRange] = useState<DateRangeOption | 'Last 7 Days' | 'Last 30 Days' | 'Last 90 Days' | 'This Year'>(initialDateRange);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [profileOpen, setProfileOpen] = useState<boolean>(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Мемоизированные search items
+  const searchIndex = useMemo(() => {
+    if (externalSearchItems) return externalSearchItems;
+    return SEARCH_INDEX;
+  }, [externalSearchItems]);
 
   /* Закрытие dropdown по клику вне */
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
+      }
+      if (profileDropdownRef.current && !profileDropdownRef.current.contains(e.target as Node)) {
+        setProfileOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
@@ -112,17 +135,22 @@ export const Header: React.FC<HeaderProps> = ({
       if (e.key === 'Escape') {
         setSearchOpen(false);
         setDropdownOpen(false);
+        setProfileOpen(false);
       }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, []);
 
+  const openSearch = () => {
+    setQuery('');
+    setActiveIndex(0);
+    setSearchOpen(true);
+  };
+
   /* Фокус инпута + блокировка скролла при открытой модалке */
   useEffect(() => {
     if (!searchOpen) return;
-    setQuery('');
-    setActiveIndex(0);
     document.body.style.overflow = 'hidden';
     const t = setTimeout(() => searchInputRef.current?.focus(), 0);
     return () => {
@@ -139,11 +167,11 @@ export const Header: React.FC<HeaderProps> = ({
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return SEARCH_INDEX;
-    return SEARCH_INDEX.filter(
+    if (!q) return searchIndex;
+    return searchIndex.filter(
       (i) => i.label.toLowerCase().includes(q) || i.hint.toLowerCase().includes(q)
     );
-  }, [query]);
+  }, [query, searchIndex]);
 
   const selectRange = (r: DateRangeOption) => {
     setDateRange(r);
@@ -154,6 +182,11 @@ export const Header: React.FC<HeaderProps> = ({
   const toggleTheme = (t: ThemeMode) => {
     setTheme(t);
     onThemeChange?.(t);
+  };
+
+  const handleLogout = () => {
+    setProfileOpen(false);
+    onLogout?.();
   };
 
   const selectItem = (item: SearchItem) => {
@@ -180,15 +213,15 @@ export const Header: React.FC<HeaderProps> = ({
       <header className="sticky top-0 z-50 bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#334155]">
         <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center gap-6">
           {/* ================= Logo ================= */}
-          <a href="/" className="flex items-center gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
             <BarChart2 className="w-6 h-6 text-[#6366F1]" strokeWidth={2.5} />
             <span className="text-white font-bold text-xl tracking-tight">MetricFlow</span>
-          </a>
+          </Link>
 
           {/* ================= Global Search (триггер Command Palette) ================= */}
           <div className="flex-1 flex justify-center px-4">
             <button
-              onClick={() => setSearchOpen(true)}
+              onClick={openSearch}
               className="w-full max-w-[420px] h-10 flex items-center gap-2 bg-[#1E293B]/60 border border-[#334155] rounded-lg pl-3 pr-3 text-sm text-slate-400 hover:border-[#6366F1]/60 hover:text-slate-300 transition-colors"
             >
               <Search className="w-4 h-4 text-slate-500" />
@@ -265,17 +298,77 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             </div>
 
-            {/* User Avatar */}
-            <button
-              aria-label={userName}
-              className="shrink-0 rounded-full bg-[#334155] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60"
-            >
-              <img
-                src={avatarSrc}
-                alt={userName}
-                className="w-9 h-9 rounded-full object-cover border border-[#334155]"
-              />
-            </button>
+            {/* User Avatar with Profile Dropdown */}
+            <div ref={profileDropdownRef} className="relative">
+              <button
+                onClick={() => setProfileOpen((v) => !v)}
+                aria-label={userName}
+                aria-haspopup="menu"
+                aria-expanded={profileOpen}
+                className="shrink-0 rounded-full bg-[#334155] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60 cursor-pointer hover:opacity-80 transition-opacity relative"
+              >
+                <Image
+                  src={avatarSrc}
+                  alt={userName}
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 rounded-full object-cover border border-[#334155]"
+                />
+              </button>
+
+              {profileOpen && (
+                <div
+                  role="menu"
+                  className="absolute right-0 top-full mt-2 w-56 bg-[#1E293B] border border-[#334155] rounded-lg shadow-xl shadow-black/40 py-1 z-50 overflow-hidden"
+                >
+                  {/* User Info */}
+                  <div className="px-4 py-3 border-b border-[#334155]">
+                    <p className="text-sm font-medium text-[#F8FAFC]">{userName}</p>
+                    <p className="text-xs text-slate-500 truncate">{userEmail}</p>
+                  </div>
+
+                  {/* Menu Items */}
+                  <div className="py-1">
+                    <button
+                      role="menuitem"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                    >
+                      <User className="w-4 h-4" />
+                      Profile Settings
+                    </button>
+                    <button
+                      role="menuitem"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                    >
+                      <CreditCard className="w-4 h-4" />
+                      Billing & Plans
+                    </button>
+                    <button
+                      role="menuitem"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                    >
+                      <Users className="w-4 h-4" />
+                      Team Members
+                    </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-[#334155]" />
+
+                  {/* Logout */}
+                  <div className="py-1">
+                    <button
+                      role="menuitem"
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-red-400 hover:text-red-300 hover:bg-[#334155]/40 transition-colors"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Log out
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
