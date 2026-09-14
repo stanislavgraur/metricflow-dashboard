@@ -73,7 +73,7 @@ const SEARCH_INDEX: SearchItem[] = [
 // ============================================================================
 
 const Kbd: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <kbd className="px-1.5 py-0.5 text-[10px] font-medium text-slate-500 bg-[#0F172A] border border-[#334155] rounded">
+  <kbd className="px-1.5 py-0.5 text-[10px] font-medium text-slate-500 dark:text-slate-400 bg-slate-900 dark:bg-[#0F172A] border border-slate-700 dark:border-[#334155] rounded">
     {children}
   </kbd>
 );
@@ -210,21 +210,21 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#0B0F17]/95 backdrop-blur-md border-b border-[#334155]">
+      <header className="sticky top-0 z-50 bg-[var(--background)]/95 backdrop-blur-md border-b border-[var(--border)]">
         <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center gap-6">
           {/* ================= Logo ================= */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <BarChart2 className="w-6 h-6 text-[#6366F1]" strokeWidth={2.5} />
-            <span className="text-white font-bold text-xl tracking-tight">MetricFlow</span>
+            <span className="text-[var(--foreground)] font-bold text-xl tracking-tight">MetricFlow</span>
           </Link>
 
           {/* ================= Global Search (триггер Command Palette) ================= */}
           <div className="flex-1 flex justify-center px-4">
             <button
               onClick={openSearch}
-              className="w-full max-w-[420px] h-10 flex items-center gap-2 bg-[#1E293B]/60 border border-[#334155] rounded-lg pl-3 pr-3 text-sm text-slate-400 hover:border-[#6366F1]/60 hover:text-slate-300 transition-colors"
+              className="w-full max-w-[420px] h-10 flex items-center gap-2 bg-[var(--surface)]/60 border border-[var(--border)] rounded-lg pl-3 pr-3 text-sm text-[var(--muted)] hover:border-[#6366F1]/60 hover:text-[var(--foreground)] transition-colors"
             >
-              <Search className="w-4 h-4 text-slate-500" />
+              <Search className="w-4 h-4 text-[var(--muted)]" />
               <span className="flex-1 text-left">Global Search...</span>
               <Kbd>⌘K</Kbd>
             </button>
@@ -238,19 +238,19 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setDropdownOpen((v) => !v)}
                 aria-haspopup="listbox"
                 aria-expanded={dropdownOpen}
-                className="flex items-center gap-2 h-10 px-4 bg-[#1E293B] border border-[#334155] rounded-lg hover:bg-[#334155]/50 transition-colors"
+                className="flex items-center gap-2 h-10 px-4 bg-[var(--surface)] border border-[var(--border)] rounded-lg hover:bg-[var(--border)]/50 transition-colors"
               >
-                <Calendar className="w-4 h-4 text-slate-400" />
-                <span className="text-sm font-medium text-slate-200">{dateRange}</span>
+                <Calendar className="w-4 h-4 text-[var(--muted)]" />
+                <span className="text-sm font-medium text-[var(--foreground)]">{dateRange}</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 text-[var(--muted)] transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                 />
               </button>
 
               {dropdownOpen && (
                 <div
                   role="listbox"
-                  className="absolute right-0 top-full mt-2 w-44 bg-[#1E293B] border border-[#334155] rounded-lg shadow-xl shadow-black/40 py-1 z-50"
+                  className="absolute right-0 top-full mt-2 w-44 bg-[var(--surface)] border border-[var(--border)] rounded-lg shadow-xl shadow-black/40 py-1 z-50"
                 >
                   {DATE_RANGES.map((r) => (
                     <button
@@ -260,8 +260,8 @@ export const Header: React.FC<HeaderProps> = ({
                       onClick={() => selectRange(r)}
                       className={`w-full flex items-center justify-between px-3 py-2 text-left text-sm transition-colors ${
                         r === dateRange
-                          ? 'text-[#F8FAFC] bg-[#334155]/50'
-                          : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#334155]/40'
+                          ? 'text-[var(--foreground)] bg-[var(--border)]/50'
+                          : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--border)]/40'
                       }`}
                     >
                       {r}
@@ -273,14 +273,14 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Theme Toggle */}
-            <div className="flex items-center gap-1 p-1 bg-[#1E293B] border border-[#334155] rounded-lg">
+            <div className="flex items-center gap-1 p-1 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
               <button
                 onClick={() => toggleTheme('light')}
                 aria-label="Light theme"
                 className={`p-1.5 rounded-md transition-colors ${
                   theme === 'light'
-                    ? 'bg-[#334155] text-slate-100'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-[var(--border)] text-[var(--foreground)]'
+                    : 'text-[var(--muted)] hover:text-[var(--foreground)]'
                 }`}
               >
                 <Sun className="w-4 h-4" />
@@ -290,8 +290,8 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label="Dark theme"
                 className={`p-1.5 rounded-md transition-colors ${
                   theme === 'dark'
-                    ? 'bg-[#334155] text-slate-100'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-[var(--border)] text-[var(--foreground)]'
+                    : 'text-[var(--muted)] hover:text-[var(--foreground)]'
                 }`}
               >
                 <Moon className="w-4 h-4" />
@@ -305,47 +305,47 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label={userName}
                 aria-haspopup="menu"
                 aria-expanded={profileOpen}
-                className="shrink-0 rounded-full bg-[#334155] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60 cursor-pointer hover:opacity-80 transition-opacity relative"
+                className="shrink-0 rounded-full bg-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/60 cursor-pointer hover:opacity-80 transition-opacity relative"
               >
                 <Image
                   src={avatarSrc}
                   alt={userName}
                   width={36}
                   height={36}
-                  className="w-9 h-9 rounded-full object-cover border border-[#334155]"
+                  className="w-9 h-9 rounded-full object-cover border border-[var(--border)]"
                 />
               </button>
 
               {profileOpen && (
                 <div
                   role="menu"
-                  className="absolute right-0 top-full mt-2 w-56 bg-[#1E293B] border border-[#334155] rounded-lg shadow-xl shadow-black/40 py-1 z-50 overflow-hidden"
+                  className="absolute right-0 top-full mt-2 w-56 bg-[var(--surface)] border border-[var(--border)] rounded-lg shadow-xl shadow-black/40 py-1 z-50 overflow-hidden"
                 >
                   {/* User Info */}
-                  <div className="px-4 py-3 border-b border-[#334155]">
-                    <p className="text-sm font-medium text-[#F8FAFC]">{userName}</p>
-                    <p className="text-xs text-slate-500 truncate">{userEmail}</p>
+                  <div className="px-4 py-3 border-b border-[var(--border)]">
+                    <p className="text-sm font-medium text-[var(--foreground)]">{userName}</p>
+                    <p className="text-xs text-[var(--muted)] truncate">{userEmail}</p>
                   </div>
 
                   {/* Menu Items */}
                   <div className="py-1">
                     <button
                       role="menuitem"
-                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--border)]/40 transition-colors"
                     >
                       <User className="w-4 h-4" />
                       Profile Settings
                     </button>
                     <button
                       role="menuitem"
-                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--border)]/40 transition-colors"
                     >
                       <CreditCard className="w-4 h-4" />
                       Billing & Plans
                     </button>
                     <button
                       role="menuitem"
-                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-slate-400 hover:text-[#F8FAFC] hover:bg-[#334155]/40 transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--border)]/40 transition-colors"
                     >
                       <Users className="w-4 h-4" />
                       Team Members
@@ -353,14 +353,14 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-[#334155]" />
+                  <div className="border-t border-[var(--border)]" />
 
                   {/* Logout */}
                   <div className="py-1">
                     <button
                       role="menuitem"
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-red-400 hover:text-red-300 hover:bg-[#334155]/40 transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-left text-sm text-red-400 hover:text-red-300 hover:bg-[var(--border)]/40 transition-colors"
                     >
                       <LogOut className="w-4 h-4" />
                       Log out
@@ -382,10 +382,10 @@ export const Header: React.FC<HeaderProps> = ({
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setSearchOpen(false)}
           />
-          <div className="relative mx-auto mt-24 w-[calc(100%-2rem)] max-w-lg bg-[#1E293B] border border-[#334155] rounded-xl shadow-2xl shadow-black/60 overflow-hidden">
+          <div className="relative mx-auto mt-24 w-[calc(100%-2rem)] max-w-lg bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-2xl shadow-black/60 overflow-hidden">
             {/* Input row */}
-            <div className="flex items-center gap-3 px-4 h-12 border-b border-[#334155]">
-              <Search className="w-4 h-4 text-slate-500 shrink-0" />
+            <div className="flex items-center gap-3 px-4 h-12 border-b border-[var(--border)]">
+              <Search className="w-4 h-4 text-[var(--muted)] shrink-0" />
               <input
                 ref={searchInputRef}
                 value={query}
@@ -396,18 +396,18 @@ export const Header: React.FC<HeaderProps> = ({
                 onKeyDown={handleSearchKeyDown}
                 placeholder="Search metrics, transactions..."
                 data-gramm="false"
-                className="flex-1 bg-transparent text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none"
+                className="flex-1 bg-transparent text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none"
               />
               <button onClick={() => setSearchOpen(false)} aria-label="Close search">
-                <X className="w-4 h-4 text-slate-500 hover:text-slate-300 transition-colors" />
+                <X className="w-4 h-4 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors" />
               </button>
             </div>
 
             {/* Results */}
             <div className="max-h-80 overflow-y-auto py-2">
               {filtered.length === 0 ? (
-                <div className="px-4 py-10 text-center text-sm text-slate-500">
-                  No results for “{query}”
+                <div className="px-4 py-10 text-center text-sm text-[var(--muted)]">
+                  No results for "{query}"
                 </div>
               ) : (
                 (['metric', 'transaction'] as const).map((type) => {
@@ -415,7 +415,7 @@ export const Header: React.FC<HeaderProps> = ({
                   if (items.length === 0) return null;
                   return (
                     <div key={type}>
-                      <div className="px-4 py-1.5 text-[10px] font-medium uppercase tracking-wider text-slate-500">
+                      <div className="px-4 py-1.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
                         {type === 'metric' ? 'Metrics' : 'Transactions'}
                       </div>
                       {items.map((item) => {
@@ -426,11 +426,11 @@ export const Header: React.FC<HeaderProps> = ({
                             onClick={() => selectItem(item)}
                             onMouseEnter={() => setActiveIndex(idx)}
                             className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                              idx === activeIndex ? 'bg-[#334155]/50' : ''
+                              idx === activeIndex ? 'bg-[var(--border)]/50' : ''
                             }`}
                           >
                             <span
-                              className={`flex items-center justify-center w-7 h-7 rounded-md border border-[#334155] bg-[#0F172A] shrink-0 ${
+                              className={`flex items-center justify-center w-7 h-7 rounded-md border border-[var(--border)] bg-slate-900 dark:bg-[#0F172A] shrink-0 ${
                                 item.type === 'metric' ? 'text-[#10B981]' : 'text-[#818CF8]'
                               }`}
                             >
@@ -441,10 +441,10 @@ export const Header: React.FC<HeaderProps> = ({
                               )}
                             </span>
                             <span className="flex-1 min-w-0">
-                              <span className="block text-sm text-[#F8FAFC] truncate">
+                              <span className="block text-sm text-[var(--foreground)] truncate">
                                 {item.label}
                               </span>
-                              <span className="block text-xs text-slate-500 truncate">
+                              <span className="block text-xs text-[var(--muted)] truncate">
                                 {item.hint}
                               </span>
                             </span>
@@ -458,7 +458,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Footer hints */}
-            <div className="flex items-center gap-3 px-4 h-9 border-t border-[#334155] bg-[#0F172A]/60 text-[10px] text-slate-500">
+            <div className="flex items-center gap-3 px-4 h-9 border-t border-[var(--border)] bg-slate-900/60 dark:bg-[#0F172A]/60 text-[10px] text-[var(--muted)]">
               <span className="flex items-center gap-1">
                 <Kbd>↑</Kbd>
                 <Kbd>↓</Kbd> navigate

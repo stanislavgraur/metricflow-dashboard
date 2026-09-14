@@ -282,7 +282,7 @@ export const RecentActivityTable: React.FC<RecentActivityTableProps> = ({
               <div className="px-6 py-4 border-t border-[var(--border)] shrink-0">
                 <button
                   onClick={handleDownloadReceipt}
-                  className="w-full h-10 flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white text-sm font-medium rounded-lg transition-colors"
+                  className="w-full h-10 flex items-center justify-center gap-2 bg-[#6366F1] hover:bg-[#4F46E5] text-white dark:text-slate-100 text-sm font-medium rounded-lg transition-colors"
                 >
                   <Download className="w-4 h-4" />
                   Download Receipt

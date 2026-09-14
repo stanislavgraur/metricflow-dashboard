@@ -212,10 +212,10 @@ export const RevenueAcquisitionBlock: React.FC<RevenueAcquisitionBlockProps> = (
 
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} opacity={0.3} />
-              <XAxis dataKey="month" stroke="#64748B" fontSize={12} tickLine={false} axisLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} opacity={0.3} />
+              <XAxis dataKey="month" stroke="var(--muted)" fontSize={12} tickLine={false} axisLine={false} />
               <YAxis
-                stroke="#64748B"
+                stroke="var(--muted)"
                 fontSize={12}
                 tickLine={false}
                 axisLine={false}
