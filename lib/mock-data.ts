@@ -364,9 +364,9 @@ export const getTransactions = (period: DateRangeOption): Transaction[] => {
 export const getSearchItems = (transactions: Transaction[]) => {
   return [
     { id: 'm-1', type: 'metric' as const, label: 'Total Revenue', hint: '$2,797.3M · +14.2%' },
-    { id: 'm-2', type: 'metric' as const, label: 'MRR', hint: '$692.4K · +14.2%' },
-    { id: 'm-3', type: 'metric' as const, label: 'Active Users', hint: '3,336 · +14.2%' },
-    { id: 'm-4', type: 'metric' as const, label: 'Conversion Rate', hint: '26.92% · +14.2%' },
+    { id: 'm-2', type: 'metric' as const, label: 'MRR', hint: '$692.4K · +8.1%' },
+    { id: 'm-3', type: 'metric' as const, label: 'Active Users', hint: '3,336 · -2.4%' },
+    { id: 'm-4', type: 'metric' as const, label: 'Conversion Rate', hint: '26.92% · +5.7%' },
     ...transactions.slice(0, 4).map((t, i) => ({
       id: `t-${i + 1}`,
       type: 'transaction' as const,
