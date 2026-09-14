@@ -1,0 +1,43 @@
+```
+# Next.js build outputs
+.next/
+
+# Environment variables
+.env.local
+.env.
+
+# Dependencies
+node_modules/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Editor files
+.vscode/
+.idea/
+
+# Python cache (if present)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+dist/
+build/
+target/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+htmlcov/
+*.coverage
+
+# Cache directories
+.cache/
+.nyc_output/
+```
