@@ -1,51 +1,77 @@
-```gitignore
+```
+# Next.js build outputs
+.next/
+
 # Dependencies
 node_modules/
 
-# Build outputs
-dist/
-build/
-target/
+# Environment variables
+.env
+.env.local
+*.env.*
+
+# Cache directories
+.cache/
+**/.cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.py.class
 .Python
-env/
-venv/
-.venv/
-.env
-.env.local
-.env.*
+*.so
+*.egg-info/
+.eggs/
 
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Build outputs
+dist/
+build/
+target/
+out/
+bin/
+*.out
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
+# Package manager caches
+.npm/
+.yarn/
+.pnpm-store/
+.bazel-cache/
 
 # Testing
-.mypy_cache/
-.pytest_cache/
-.nyc_output/
-istanbul/
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# Compression artifacts
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
 ```

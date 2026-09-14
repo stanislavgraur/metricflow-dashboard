@@ -2928,9 +2928,13 @@ const generateSparklineData = (baseValue, volatility, points, seed)=>{
     }
     return data;
 };
+// ============================================================================
+// FIXED DATE HELPERS - using fixed reference date for SSR/client consistency
+// ============================================================================
+const REFERENCE_DATE = new Date(2024, 11, 15); // Fixed reference: Dec 15, 2024
 const getLastNDays = (n)=>{
     const days = [];
-    const now = new Date();
+    const now = REFERENCE_DATE;
     for(let i = n - 1; i >= 0; i--){
         const date = new Date(now);
         date.setDate(date.getDate() - i);
@@ -2943,7 +2947,7 @@ const getLastNDays = (n)=>{
 };
 const getLastNMonths = (n)=>{
     const months = [];
-    const now = new Date();
+    const now = REFERENCE_DATE;
     for(let i = n - 1; i >= 0; i--){
         const date = new Date(now);
         date.setMonth(date.getMonth() - i);
@@ -3067,10 +3071,13 @@ const getRevenueData = (period)=>{
     const data = [];
     let runningDirect = baseDirect;
     let runningEnterprise = baseEnterprise;
+    // Use deterministic seed based on period for consistent SSR/client rendering
+    const seedBase = period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365;
     for(let i = 0; i < points; i++){
-        const growthFactor = 1 + i * 0.02 + (Math.random() - 0.4) * 0.1;
-        runningDirect = Math.round(runningDirect * growthFactor);
-        runningEnterprise = Math.round(runningEnterprise * (1 + i * 0.025 + (Math.random() - 0.4) * 0.1));
+        const growthFactorDirect = 1 + i * 0.02 + (seededRandom(seedBase + i) - 0.45) * 0.1;
+        const growthFactorEnterprise = 1 + i * 0.025 + (seededRandom(seedBase + i + 100) - 0.45) * 0.1;
+        runningDirect = Math.round(runningDirect * growthFactorDirect);
+        runningEnterprise = Math.round(runningEnterprise * growthFactorEnterprise);
         data.push({
             month: labels[i],
             direct: runningDirect,
@@ -3180,13 +3187,16 @@ const getTransactions = (period)=>{
         'Bank Transfer'
     ];
     const now = new Date();
+    // Use deterministic seed based on period for consistent SSR/client rendering
+    const seedBase = period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365;
     for(let i = 0; i < count; i++){
-        const daysAgo = Math.floor(Math.random() * (period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365));
+        const daysAgo = Math.floor(seededRandom(seedBase + i) * (period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365));
         const date = new Date(now);
         date.setDate(date.getDate() - daysAgo);
-        const statusIndex = Math.random() > 0.2 ? 0 : Math.random() > 0.5 ? 1 : 2;
+        const statusRand = seededRandom(seedBase + i + 50);
+        const statusIndex = statusRand > 0.8 ? 2 : statusRand > 0.5 ? 1 : 0;
         transactions.push({
-            id: `1200${1000 + i}${Math.floor(Math.random() * 100)}`,
+            id: `1200${1000 + i}${Math.floor(seededRandom(seedBase + i + 100) * 100)}`,
             customer: customers[i % customers.length],
             date: date.toLocaleDateString('en-US', {
                 month: 'short',
@@ -3194,8 +3204,8 @@ const getTransactions = (period)=>{
                 year: 'numeric'
             }),
             status: statuses[statusIndex],
-            total: Math.round((Math.random() * 1500 + 100) * 100) / 100,
-            paymentMethod: paymentMethods[Math.floor(Math.random() * paymentMethods.length)]
+            total: Math.round((seededRandom(seedBase + i + 150) * 1500 + 100) * 100) / 100,
+            paymentMethod: paymentMethods[Math.floor(seededRandom(seedBase + i + 200) * paymentMethods.length)]
         });
     }
     return transactions.sort((a, b)=>new Date(b.date).getTime() - new Date(a.date).getTime());
