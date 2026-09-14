@@ -1,0 +1,11 @@
+MetricFlow — Official Receipt
+================================
+Transaction ID : 12005302
+Customer       : Google Dences
+Date           : April 29, 2023
+Status         : Pending
+Payment method : Stripe
+--------------------------------
+Subtotal       : $190.99
+Processing fee : $6.01
+TOTAL          : $197.00
