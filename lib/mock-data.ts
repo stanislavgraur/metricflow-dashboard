@@ -51,6 +51,15 @@ export type DateRangeOption = '7d' | '30d' | '90d' | '1y';
 // HELPER FUNCTIONS
 // ============================================================================
 
+/**
+ * Детерминированный генератор псевдослучайных чисел (seeded random)
+ * Возвращает одинаковые значения для одних и тех же входных данных
+ */
+const seededRandom = (seed: number): number => {
+  const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+  return x - Math.floor(x);
+};
+
 const formatCurrency = (value: number): string => {
   if (value >= 1_000_000_000) {
     return `$${(value / 1_000_000_000).toFixed(1)}B`;
@@ -68,12 +77,13 @@ const formatNumber = (value: number): string => {
   return value.toLocaleString('en-US');
 };
 
-const generateSparklineData = (baseValue: number, volatility: number, points: number): number[] => {
+const generateSparklineData = (baseValue: number, volatility: number, points: number, seed: number): number[] => {
   const data: number[] = [];
   let currentValue = baseValue;
   
   for (let i = 0; i < points; i++) {
-    const change = (Math.random() - 0.45) * volatility;
+    // Используем seededRandom вместо Math.random для детерминированности
+    const change = (seededRandom(seed + i) - 0.45) * volatility;
     currentValue = Math.max(baseValue * 0.7, currentValue * (1 + change));
     data.push(Math.round(currentValue));
   }
@@ -121,51 +131,63 @@ export const getKpiMetrics = (period: DateRangeOption): KpiMetric[] => {
   
   const multiplier = multipliers[period];
   
+  // Создаем детерминированный seed на основе периода
+  const periodSeed = { '7d': 7, '30d': 30, '90d': 90, '1y': 365 }[period];
+  
   // Base values for 90d period
   const baseRevenue = 2_797_300_000;
   const baseMRR = 692_400_000;
   const baseUsers = 3336;
+  // Детерминированное значение конверсии вместо Math.random()
   const baseConversion = 26.92;
   
   const revenue = baseRevenue * multiplier;
   const mrr = baseMRR * multiplier;
   const users = Math.round(baseUsers * Math.sqrt(multiplier));
-  const conversion = baseConversion + (Math.random() - 0.5) * 5;
+  // Детерминированная вариация конверсии
+  const conversionVariation = (seededRandom(periodSeed + 100) - 0.5) * 5;
+  const conversion = baseConversion + conversionVariation;
   
-  const trends = [14.2, 12.8, 18.5, 9.3];
+  // Детерминированные тренды
+  const trends = [
+    14.2 + seededRandom(periodSeed + 1) * 2,
+    12.8 + seededRandom(periodSeed + 2) * 2,
+    18.5 + seededRandom(periodSeed + 3) * 2,
+    9.3 + seededRandom(periodSeed + 4) * 2,
+  ];
   
   return [
     {
       label: 'TOTAL REVENUE',
       value: formatCurrency(revenue),
       trend: trends[0],
-      trendLabel: `+${trends[0]}%`,
+      trendLabel: `+${trends[0].toFixed(1)}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(revenue / 1_000_000, 0.08, 10),
+      sparklineData: generateSparklineData(revenue / 1_000_000, 0.08, 10, periodSeed + 1),
     },
     {
       label: 'MRR',
       value: formatCurrency(mrr),
       trend: trends[1],
-      trendLabel: `+${trends[1]}%`,
+      trendLabel: `+${trends[1].toFixed(1)}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(mrr / 1_000_000, 0.06, 10),
+      sparklineData: generateSparklineData(mrr / 1_000_000, 0.06, 10, periodSeed + 2),
     },
     {
       label: 'ACTIVE USERS',
       value: formatNumber(users),
       trend: trends[2],
-      trendLabel: `+${trends[2]}%`,
+      trendLabel: `+${trends[2].toFixed(1)}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(users, 0.1, 10),
+      sparklineData: generateSparklineData(users, 0.1, 10, periodSeed + 3),
     },
     {
       label: 'CONVERSION RATE',
       value: `${conversion.toFixed(2)}%`,
       trend: trends[3],
-      trendLabel: `+${trends[3]}%`,
+      trendLabel: `+${trends[3].toFixed(1)}%`,
       trendColor: 'success' as const,
-      sparklineData: generateSparklineData(conversion * 100, 0.05, 10),
+      sparklineData: generateSparklineData(conversion * 100, 0.05, 10, periodSeed + 4),
     },
   ];
 };
@@ -198,6 +220,7 @@ export const getRevenueData = (period: DateRangeOption): ChartDataPoint[] => {
     },
   };
   
+  const periodSeed = { '7d': 7, '30d': 30, '90d': 90, '1y': 365 }[period];
   const { points, labels, baseDirect, baseEnterprise } = config[period];
   const data: ChartDataPoint[] = [];
   
@@ -205,10 +228,12 @@ export const getRevenueData = (period: DateRangeOption): ChartDataPoint[] => {
   let runningEnterprise = baseEnterprise;
   
   for (let i = 0; i < points; i++) {
-    const growthFactor = 1 + (i * 0.02) + (Math.random() - 0.4) * 0.1;
+    // Детерминированный рост вместо Math.random()
+    const growthFactorDirect = 1 + (i * 0.02) + (seededRandom(periodSeed + i + 10) - 0.4) * 0.1;
+    const growthFactorEnterprise = 1 + (i * 0.025) + (seededRandom(periodSeed + i + 20) - 0.4) * 0.1;
     
-    runningDirect = Math.round(runningDirect * growthFactor);
-    runningEnterprise = Math.round(runningEnterprise * (1 + (i * 0.025) + (Math.random() - 0.4) * 0.1));
+    runningDirect = Math.round(runningDirect * growthFactorDirect);
+    runningEnterprise = Math.round(runningEnterprise * growthFactorEnterprise);
     
     data.push({
       month: labels[i],
@@ -286,6 +311,7 @@ export const getTransactions = (period: DateRangeOption): Transaction[] => {
   
   const count = transactionCounts[period];
   const transactions: Transaction[] = [];
+  const periodSeed = { '7d': 7, '30d': 30, '90d': 90, '1y': 365 }[period];
   
   const customers = [
     'Hanes Smith', 'Google Dences', 'Stripe Checkout', 'Acme Corp',
@@ -305,19 +331,30 @@ export const getTransactions = (period: DateRangeOption): Transaction[] => {
   const now = new Date();
   
   for (let i = 0; i < count; i++) {
-    const daysAgo = Math.floor(Math.random() * (period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365));
+    // Детерминированные дни вместо Math.random()
+    const maxDays = period === '7d' ? 7 : period === '30d' ? 30 : period === '90d' ? 90 : 365;
+    const daysAgo = Math.floor(seededRandom(periodSeed + i + 50) * maxDays);
     const date = new Date(now);
     date.setDate(date.getDate() - daysAgo);
     
-    const statusIndex = Math.random() > 0.2 ? 0 : Math.random() > 0.5 ? 1 : 2;
+    // Детерминированный статус
+    const statusRand = seededRandom(periodSeed + i + 60);
+    const statusIndex = statusRand > 0.8 ? 2 : statusRand > 0.5 ? 1 : 0;
+    
+    // Детерминированная сумма
+    const amountRand = seededRandom(periodSeed + i + 70);
+    const total = Math.round((amountRand * 1500 + 100) * 100) / 100;
+    
+    // Детерминированный метод оплаты
+    const paymentIndex = Math.floor(seededRandom(periodSeed + i + 80) * paymentMethods.length);
     
     transactions.push({
-      id: `1200${1000 + i}${Math.floor(Math.random() * 100)}`,
+      id: `1200${1000 + i}${Math.floor(seededRandom(periodSeed + i + 90) * 100)}`,
       customer: customers[i % customers.length],
       date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       status: statuses[statusIndex],
-      total: Math.round((Math.random() * 1500 + 100) * 100) / 100,
-      paymentMethod: paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
+      total: total,
+      paymentMethod: paymentMethods[paymentIndex],
     });
   }
   
